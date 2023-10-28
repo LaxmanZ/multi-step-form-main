@@ -4,14 +4,9 @@ This project is a multi-step subscription form for a fictional service. It allow
 
 ## Table of Contents
 
-- [Demo](#demo)
 - [Features](#features)
 - [Usage](#usage)
 - [Customization](#customization)
-  
-## Demo
-
-You can check out a live demo of this multi-step subscription form [here](#) (Insert link to your live demo).
 
 ## Features
 
@@ -26,7 +21,7 @@ You can check out a live demo of this multi-step subscription form [here](#) (In
 1. Clone the repository to your local machine:
 
    ```bash
-   git clone https://github.com/your-username/multi-step-form.git
+   git clone https://github.com/LaxmanZ/multi-step-form-main.git
    ```
 2. Open the project in your preferred code editor.
 
