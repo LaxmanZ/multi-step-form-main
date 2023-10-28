@@ -1,0 +1,97 @@
+/* styles.css */
+/* Primary Colors */
+:root {
+  --marine-blue: hsl(213, 96%, 18%);
+  --purplish-blue: hsl(243, 100%, 62%);
+  --pastel-blue: hsl(228, 100%, 84%);
+  --light-blue: hsl(206, 94%, 87%);
+  --strawberry-red: hsl(354, 84%, 57%);
+}
+
+/* Neutral Colors */
+:root {
+  --cool-gray: hsl(231, 11%, 63%);
+  --light-gray: hsl(229, 24%, 87%);
+  --magnolia: hsl(217, 100%, 97%);
+  --alabaster: hsl(231, 100%, 99%);
+  --white: hsl(0, 0%, 100%);
+}
+
+/* Typography */
+body {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 16px;
+}
+
+/* Layout */
+body {
+  background-color: var(--magnolia);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  background-color: var(--marine-blue);
+  color: var(--light-blue);
+  text-align: center;
+  padding: 20px;
+}
+
+/* Step Container */
+.step-container {
+    background-color: var(--light-gray);
+    padding: 20px;
+    border: 2px solid var(--marine-blue); /* Add a border */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 375px;
+    box-sizing: border-box; /* Include padding and border in the width calculation */
+  }
+  
+  /* Form Steps */
+  .step {
+    display: none;
+  }
+  
+  /* Step 1 */
+  .step1 {
+    display: block;
+  }
+  
+  /* Form Input Styles */
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid var(--cool-gray);
+    border-radius: 5px;
+  }
+  
+  /* Step 2 and Step 3 Radio and Checkbox Labels */
+  label {
+    display: block;
+    margin: 10px 0;
+  }
+  
+  /* Buttons */
+  button {
+    background-color: var(--purplish-blue);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: var(--strawberry-red);
+  }

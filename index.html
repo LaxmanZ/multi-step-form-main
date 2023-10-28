@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <title>Multi-step form</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+    <script>
+      let step = 1; // Current step
+
+      function showStep(stepToShow) {
+        // Hide all steps
+        for (let i = 1; i <= 4; i++) {
+          document.getElementById('step' + i).style.display = 'none';
+        }
+
+        // Show the specified step
+        document.getElementById('step' + stepToShow).style.display = 'block';
+        step = stepToShow;
+
+        updateSummary(); // Call to update the summary
+      }
+
+      function nextStep() {
+        if (step < 4) {
+          showStep(step + 1);
+        }
+      }
+
+      function prevStep() {
+        if (step > 1) {
+          showStep(step - 1);
+        }
+      }
+
+      function updateSummary() {
+        // Add your code here to dynamically update the summary section
+        let summary = document.getElementById('summary');
+        summary.innerHTML = ''; // Clear existing content
+
+        if (step === 4) {
+          // If on the summary step (Step 4), populate the summary here
+          // You can access user inputs from previous steps and calculate the total.
+          // Example:
+          let name = document.getElementById('name').value;
+          let email = document.getElementById('email').value;
+          let phone = document.getElementById('phone').value;
+          let plan = document.querySelector('input[name="plan"]:checked').value;
+          let addons = document.querySelectorAll('input[name="addon"]:checked');
+
+          let total = 0;
+          total += parseInt(plan); // Convert the plan value to an integer
+
+          for (let addon of addons) {
+            total += parseInt(addon.value);
+          }
+
+          // Display the summary
+          summary.innerHTML = `
+          Name: ${name}<br>
+          Email: ${email}<br>
+          Phone: ${phone}<br>
+          Plan: $${plan}/mo<br>
+          Add-ons:
+        `;
+
+          for (let addon of addons) {
+            summary.innerHTML += `<br>${addon.dataset.name}: $${addon.value}/mo`;
+          }
+
+          summary.innerHTML += `<br><b>Total (per month): $${total}</b>`;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <!-- Sidebar start -->
+    <!-- ... (Sidebar content remains the same) ... -->
+    <!-- Step 1 start -->
+    <div id="step1">
+      Personal info Please provide your name, email address, and phone number.
+      Name
+      <input type="text" id="name" placeholder="e.g. Stephen King" />
+      Email Address
+      <input type="email" id="email" placeholder="e.g. stephenking@lorem.com" />
+      Phone Number
+      <input type="tel" id="phone" placeholder="e.g. +1 234 567 890" />
+      <button onclick="nextStep()">Next Step</button>
+    </div>
+    <!-- Step 1 end -->
+
+    <!-- Step 2 start -->
+    <div id="step2" style="display: none">
+      Select your plan You have the option of monthly or yearly billing.
+      <form>
+        <label>
+          <input type="radio" name="plan" value="9" /> Arcade $9/mo
+        </label>
+        <br />
+        <label>
+          <input type="radio" name="plan" value="12" /> Advanced $12/mo
+        </label>
+        <br />
+        <label>
+          <input type="radio" name="plan" value="15" /> Pro $15/mo
+        </label>
+      </form>
+      <label>
+        <input type="radio" name="billing" value="monthly" checked /> Monthly
+      </label>
+      <label>
+        <input type="radio" name="billing" value="yearly" /> Yearly
+      </label>
+      <button onclick="prevStep()">Go Back</button>
+      <button onclick="nextStep()">Next Step</button>
+    </div>
+    <!-- Step 2 end -->
+
+    <!-- Step 3 start -->
+    <div id="step3" style="display: none">
+      Pick add-ons Add-ons help enhance your gaming experience.
+      <form>
+        <label>
+          <input
+            type="checkbox"
+            name="addon"
+            value="1"
+            data-name="Online service"
+          />
+          Online service +$1/mo
+        </label>
+        <br />
+        <label>
+          <input
+            type="checkbox"
+            name="addon"
+            value="2"
+            data-name="Larger storage"
+          />
+          Larger storage +$2/mo
+        </label>
+        <br />
+        <label>
+          <input
+            type="checkbox"
+            name="addon"
+            value="2"
+            data-name="Customizable Profile"
+          />
+          Customizable Profile +$2/mo
+        </label>
+      </form>
+      <button onclick="prevStep()">Go Back</button>
+      <button onclick="nextStep()">Next Step</button>
+    </div>
+    <!-- Step 3 end -->
+
+    <!-- Step 4 start -->
+    <div id="step4" style="display: none">
+      Finishing up Double-check everything looks OK before confirming.
+      <div id="summary"></div>
+      <button onclick="prevStep()">Go Back</button>
+      <button>Confirm</button>
+    </div>
+    <!-- Step 4 end -->
+  </body>
+</html>
